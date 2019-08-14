@@ -10,7 +10,7 @@ class WC_Admin_Invoice
         include dirname(__FILE__) . '/views/html-admin-invoices.php';
     }
 
-    public function orders()
+    public static function orders()
     {
         $query = new WC_Order_Query();
 
