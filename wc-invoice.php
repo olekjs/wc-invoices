@@ -7,17 +7,11 @@ Author: Olek Kaim
 Author URI: https://olekkaim.pl
  */
 
+add_action('admin_menu', 'register_invoices_page');
+
 if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
-    // add_action('init', 'my_init', 1);
-
-    // function my_init(){
-    //     $orders = new WC_Order(['status' => 'processing']);
-    //     // dd($orders);
-    // }
-
-    add_action('admin_menu', 'register_invoices_page');
-
-    function register_invoices_page() {
+    function register_invoices_page()
+    {
         add_submenu_page(
             'woocommerce',
             'Faktury',
@@ -28,8 +22,10 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
         );
     }
 
-    function init_view_class() {
-         include dirname( __FILE__ ) . '/includes/class-wc-admin-invoice.php';
+    function init_view_class()
+    {
+        include_once dirname(__FILE__) . '/includes/class-wc-admin-invoice.php';
+        WC_Admin_Invoice::output();
     }
 }
 
